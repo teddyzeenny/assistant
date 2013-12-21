@@ -1,11 +1,18 @@
 var Router = Ember.Router.extend(); // ensure we don't share routes between all Router instances
 
 Router.map(function() {
-  this.route('component-test');
-  this.route('helper-test');
-  // this.resource('posts', function() {
-  //   this.route('new');
-  // });
+  this.resource('publishers', function() {
+    this.route('new');
+    this.route('edit', { path: "edit/:publisher_id" });
+  });
+  this.resource('publisher_groups', function() {
+    this.route('new');
+    this.route('edit', { path: "edit/:publisherGroup_id" });
+  });
+  this.resource('monthly_reports', function() {
+    this.route('new');
+    this.route('edit', { path: "edit/:monthlyReport_id" });
+  });
 });
 
 export default Router;

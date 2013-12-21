@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>
+          {{#linkTo "publisher_groups.edit" this}}
+            <button type="button" class="btn btn-info">Edit</button>
+          {{/linkTo}}
+          <button {{action "remove" this}} type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{#linkTo "publisher_groups.new"}}<button type="button" class="btn btn-primary">Add New Group</button>{{/linkTo}}

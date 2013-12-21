@@ -1,0 +1,31 @@
+<form role="form">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    {{input class="form-control" id="firstName" value=firstName placeholder="Enter First Name"}}
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    {{input class="form-control" id="lastName" value=lastName placeholder="Enter Last Name"}}
+  </div>
+  <div class="form-group">
+    <label for="telephoneNumber">Telephone Number</label>
+    {{input class="form-control" value=telephoneNumber id="telephoneNumber" placeholder="Enter Telephone Number"}}
+  </div>
+  <div class="form-group">
+    <label for="dateOfBirth">Date of Birth</label>
+    {{input class="form-control" value=dateOfBirth id="dateOfBirth" placeholder="Enter Date of Birth"}}
+  </div>
+  <div class="form-group">
+    <label for="publisherGroup">Group</label>
+    {{view Ember.Select
+       classNames="form-control"
+       content=groups
+       selectionBinding="publisherGroup"
+       optionLabelPath="content.name"}}
+  </div>
+  <div class="form-group">
+    <label for="isPioneer">Is Pioneer?</label>
+    {{input type="checkbox" checked=isPioneer class="form-control" id="isPioneer"}}
+  </div>
+  <button {{action "submit"}} type="submit" class="btn btn-primary">Submit</button>
+</form>

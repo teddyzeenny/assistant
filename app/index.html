@@ -7,6 +7,12 @@
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <!--standard Bootstrap css file-->
+  <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.css">
+
+  <!--responsive Bootstrap css file-->
+  <link href="/vendor/bootstrap/dist/css/bootstrap-responsive.css" rel="stylesheet">
+
   <!-- build:css(tmp/result) assets/app.min.css -->
   <link rel="stylesheet" href="/assets/app.css">
   <!-- endbuild -->
@@ -29,6 +35,7 @@
     <script src="/vendor/loader.js"></script>
     <script src="/vendor/ember-resolver/dist/ember-resolver.js"></script>
     <script src="/vendor/ic-ajax/main.js"></script>
+    <script src="/vendor/ember-local-storage/localstorage_adapter.js"></script>
 
   <!-- endbuild -->
 
@@ -42,23 +49,6 @@
   <!-- @if tests=true -->
   <link rel="stylesheet" href="/vendor/qunit/qunit/qunit.css">
   <script src="/vendor/qunit/qunit/qunit.js"></script>
-
-  <style>
-    #ember-testing-container {
-      position: absolute;
-      background: white;
-      bottom: 0;
-      right: 0;
-      width: 640px;
-      height: 384px;
-      overflow: auto;
-      z-index: 9999;
-      border: 1px solid #ccc;
-    }
-    #ember-testing {
-      zoom: 50%;
-    }
-  </style>
   <!-- @endif -->
 
 </head>

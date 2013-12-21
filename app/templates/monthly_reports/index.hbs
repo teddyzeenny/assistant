@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{month}} {{year}}</td>
+        <td>
+          {{#linkTo "monthly_reports.edit" this}}
+            <button type="button" class="btn btn-info">Edit</button>
+          {{/linkTo}}
+          <button {{action "remove" this}} type="button" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{#linkTo "monthly_reports.new"}}<button type="button" class="btn btn-primary">Add New Monthly Report</button>{{/linkTo}}

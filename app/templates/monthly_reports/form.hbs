@@ -1,0 +1,35 @@
+<form role="form">
+  {{#if isEdit}}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Hours</th>
+          <th>Magazines</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each 'individualReports'}}
+          <tr>
+            <td>{{publisher.firstName}} {{publisher.lastName}}</td>
+            <td>{{input class="form-control" value=hours placeholder="Enter number of Hours"}}</td>
+            <td>{{input class="form-control" value=magazines placeholder="Enter number of Magazines"}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    Total hours: {{totalHours}}<br>
+    Total magazines: {{totalMagazines}}<br><br>
+  {{/if}}
+
+  <div class="form-group">
+    <label for="month">Month</label>
+    {{view Ember.Select class="form-control" content=months selection=month}}
+  </div>
+  <div class="form-group">
+    <label for="year">Year</label>
+    {{view Ember.Select class="form-control" content=years selection=year}}
+  </div>
+  <button {{action "submit"}} type="submit" class="btn btn-primary">Submit</button>
+</form>
