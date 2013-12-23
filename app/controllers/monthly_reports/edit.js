@@ -8,7 +8,7 @@ export default Ember.ObjectController.extend(MonthlyReportsMixin, {
     this.get('individualReports').forEach(function(report){
       var hours = report.get('hours');
       if (typeof hours !== "undefined" && hours !== null ) {
-        total = total + parseInt(hours);
+        total = total + parseInt(hours, 10);
       }
     });
     return total;
@@ -19,7 +19,7 @@ export default Ember.ObjectController.extend(MonthlyReportsMixin, {
     this.get('individualReports').forEach(function(report){
       var magazines = report.get('magazines');
       if (typeof magazines !== "undefined" && magazines !== null ) {
-        total = total + parseInt(magazines);
+        total = total + parseInt(magazines, 10);
       }
     });
     return total;

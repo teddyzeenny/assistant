@@ -15,7 +15,7 @@ var MonthylReportsMixin = Ember.Mixin.create({
   ],
   years: function() {
     var currentYear = new Date().getFullYear();
-    return [currentYear - 1, currentYear, currentYear + 1]
+    return [currentYear - 1, currentYear, currentYear + 1];
   }.property()
 });
 

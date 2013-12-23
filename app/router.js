@@ -1,7 +1,7 @@
 var Router = Ember.Router.extend(); // ensure we don't share routes between all Router instances
 
 Router.map(function() {
-  this.resource('publishers', function() {
+  this.resource('publishers',  { path: '/' }, function() {
     this.route('new');
     this.route('edit', { path: "edit/:publisher_id" });
   });

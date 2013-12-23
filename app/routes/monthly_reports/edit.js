@@ -5,8 +5,7 @@ export default Ember.Route.extend(SimpleCrudEditMixin, {
 
   setupController: function(controller, model) {
 
-    var individualReports,
-        store = this.store,
+    var store = this.store,
         report;
 
     // create individual report if individual report not found in
@@ -14,22 +13,31 @@ export default Ember.Route.extend(SimpleCrudEditMixin, {
 
     // bug: ember can't seem to fetch hasMany relationships properly
     this.store.find('individualReport').then(function(records){
-      individualReports = records.filterBy('monthlyReport.id', model.get('id'));
-    }).then(function(){
-      store.find('publisher').then(function(publishers){
-        publishers.forEach(function(publisher){
 
-          report = individualReports.findBy('publisher', publisher);
+      return records.filterBy('monthlyReport.id', model.get('id'));
 
-          if (!report) {
-            store.createRecord('individualReport', {
-              monthlyReport: model,
-              publisher: publisher
-            }).save();
-          } else {
-            model.get('individualReports').pushObject(report);
-          }
-        });
+    }).then(function(individualReports){
+
+      return Ember.RSVP.hash({publishers: store.find('publisher'), individualReports: individualReports});
+
+    }).then(function(result){
+
+      var publishers = result.publishers,
+          individualReports = result.individualReports;
+
+      publishers.forEach(function(publisher){
+
+        report = individualReports.findBy('publisher', publisher);
+
+        if (!report) {
+          store.createRecord('individualReport', {
+            monthlyReport: model,
+            publisher: publisher
+          }).save();
+        } else {
+          model.get('individualReports').pushObject(report);
+        }
+
       });
     });
 
